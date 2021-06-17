@@ -51,28 +51,28 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     info.changeLifeBy(1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    sprite.setKind(SpriteKind.Player_inmune)
+    Cloe.setKind(SpriteKind.Player_inmune)
     info.changeLifeBy(-1)
-    sprite.startEffect(effects.smiles)
+    sprite.startEffect(effects.disintegrate)
     music.jumpDown.playUntilDone()
     sprite.setKind(SpriteKind.Player)
     sprite.setImage(img`
-        . . . . f f f f f . . . . . . . 
-        . . . f e e e e e f . . . . . . 
-        . . f d d d d e e e f f . . . . 
-        . c d d d d d d e e d d f . . . 
-        . c d f d d f d e e b d c . . . 
-        c d d f d d f d e e b d c . f f 
-        c d e e d d d d e e f c . f e f 
-        c d d d d c d e e e f . . f e f 
-        . f c c c d e e e f f . . f e f 
-        . . f f f f f e e e e f . f e f 
-        . . . . f e e e e e e e f f f . 
-        . . f f e f e e f e e e e f . . 
-        . f e f f e e f f f e e e f . . 
-        f d d b d d c f f f f f f b f . 
-        f d d c d d d f . . f c d d f . 
-        . f f f f f f f . . . f f f . . 
+        . . . . . . . . . . . . . . 
+        . . . . f f f f f . f f f . 
+        . . . f f c c c c f f f f f 
+        . . f c c c c c c b f f f f 
+        . . f c c c c c c 3 c f f f 
+        . f c c c c c c c c 3 3 f . 
+        . f c c 4 c c c c c f f f . 
+        . f f c 4 4 c c c f f f f . 
+        . f f f 4 4 f b f 4 4 f f . 
+        . . f c d d f 1 4 d 4 f f . 
+        . . . f d d d d 4 f f f . . 
+        . . . f e 4 4 4 e d d 4 . . 
+        . . . f 3 3 3 3 e d d e . . 
+        . . f f 6 6 6 6 f e e f . . 
+        . . f f f f f f f f f f . . 
+        . . . f f f . . . f f . . . 
         `)
 })
 let Donito: Sprite = null
@@ -279,3 +279,6 @@ let Lili = sprites.create(img`
     . . . . c b b b c . . . . . . . 
     `, SpriteKind.Enemy)
 Lili.setPosition(1872, 224)
+info.setLife(3)
+info.setScore(0)
+game.showLongText("Utilitza els cursos per moure't  i el B per disparar els enemics", DialogLayout.Bottom)
